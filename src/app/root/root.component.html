@@ -1,0 +1,117 @@
+<div class="container">
+    <div class="row">
+        <!-- <div class="col m3">
+            <select [(ngModel)]="filter.city" (change)="filterTable('city')">
+                <option value="">All</option>
+                <option *ngFor="let city of cities" [ngValue]="city">{{city}}</option>
+            </select>
+            <label>City</label>
+        </div> -->
+        <div class="col m3">
+            <select [(ngModel)]="filter.state" (change)="filterTable()">
+                <option *ngFor="let state of states" [ngValue]="state">{{state}}</option>
+            </select>
+            <label>State</label>
+        </div>
+        <!-- <div class="col m3">
+            <select [(ngModel)]="filter.gender" (change)="filterTable()">
+                <option value="">All</option>
+                <option *ngFor="let gender of genders" [ngValue]="gender">{{gender}}</option>
+            </select>
+            <label>Gender</label>
+        </div>
+        <div class="col m3">
+            <select [(ngModel)]="filter.nationality" (change)="filterTable()">
+                <option value="">All</option>
+                <option *ngFor="let nationality of nationalities" [ngValue]="nationality">{{nationality}}</option>
+            </select>
+            <label>Nationality</label>
+        </div>
+        <div class="col m3">
+            <select [(ngModel)]="filter.status" (change)="filterTable()">
+                <option value="">All</option>
+                <option *ngFor="let status of statuses" [ngValue]="status">{{status}}</option>
+            </select>
+            <label>Status</label>
+        </div> -->
+
+        <table>
+            <th>
+                City
+            </th>
+            <!-- <th>
+            Count
+        </th> -->
+            <th>
+                Confirmed
+            </th>
+            <th>
+                Active
+            </th>
+            <th>
+                Recovered
+            </th>
+            <th>
+                Dead
+            </th>
+
+            <!-- <th *ngIf="showDetails">
+                Gender
+            </th>
+            <th *ngIf="showDetails">
+                Nationality
+            </th>
+            <th *ngIf="showDetails">
+                Status
+            </th>
+            <th *ngIf="showDetails">
+                Decription
+            </th> -->
+            <!--<th>
+            Sources
+        </th> -->
+            <tr *ngFor="let city of cities">
+                <td>
+                    {{city || 'Others'}}
+                </td>
+                <td>
+                    {{(countObj[city]['Hospitalized'] || 0)+(countObj[city]['Deceased'] || 0)+( countObj[city]['Recovered'] || 0)}}
+                </td>
+                <td>
+                    {{countObj[city]['Hospitalized'] || 0}}
+                </td>
+                <td>
+                    {{countObj[city]['Recovered'] || 0}}
+                </td>
+                <td>
+                    {{countObj[city]['Deceased'] || 0}}
+                </td>
+                <!-- <td>
+                    {{data.count}}
+                </td>
+                <td *ngIf="showDetails">
+                    {{data["Detected state"]}}
+                </td>
+                <td *ngIf="showDetails">
+                    {{data["Gender"]}}
+                </td>
+                <td *ngIf="showDetails">
+                    {{data["Nationality"]}}
+                </td>
+                <td *ngIf="showDetails">
+                    {{data["Current status"]}}
+                </td>
+                <td *ngIf="showDetails">
+                    {{data["Notes"]}}
+                </td> -->
+            </tr>
+            <tr class="last">
+                <td>Total</td>
+                <td>{{(totalCounts['Hospitalized'] || 0)+(totalCounts['Deceased'] || 0)+( totalCounts['Recovered'] || 0)}}</td>
+                <td>{{totalCounts['Hospitalized']}}</td>
+                <td>{{totalCounts['Recovered']}}</td>
+                <td>{{totalCounts['Deceased']}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
